@@ -1,0 +1,106 @@
+ Set Matrix Zeroes
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+        int m=matrix[0].size();
+        int n=matrix.size();
+        unordered_set<int>setRows;
+        unordered_set<int>setColumns;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(matrix[i][j]==0){
+                    setRows.insert(i);
+                    setColumns.insert(j);
+                }
+            }
+        }
+
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if( setRows.count(i)>0 ||  setColumns.count(j)>0){
+                    matrix[i][j]=0;
+                }
+            }
+Next Permutation
+class Solution {
+public:
+    void nextPermutation(vector<int>& nums) {
+        next_permutation(nums.begin(),nums.end());
+    }
+};
+Kadane's Algorithm
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+    long long maxi = LONG_MIN; // maximum sum
+    long long sum = 0;
+    int n=nums.size();
+    for (int i = 0; i < n; i++) {
+
+        sum += nums[i];
+
+        if (sum > maxi) {
+            maxi = sum;
+        }
+
+        // If sum < 0: discard the sum calculated
+        if (sum < 0) {
+            sum = 0;
+        }
+    }
+
+    // To consider the sum of the empty subarray
+    // uncomment the following check:
+
+    //if (maxi < 0) maxi = 0;
+
+    return maxi;
+    }
+};
+Sort an array of 0's, 1's and 2's
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        sort(nums.begin(),nums.end());
+    }
+};
+Best Time to Buy and Sell Stock
+
+
+        }
+        
+    }
+};
+Pascal's Triangle
+class Solution {
+ public:
+  vector<vector<int>> generate(int numRows) {
+    vector<vector<int>> ans;
+
+    for (int i = 0; i < numRows; ++i)
+      ans.push_back(vector<int>(i + 1, 1));
+
+    for (int i = 2; i < numRows; ++i)
+      for (int j = 1; j < ans[i].size() - 1; ++j)
+        ans[i][j] = ans[i - 1][j - 1] + ans[i - 1][j];
+
+    return ans;
+  }
+};
+Best Time to Buy and Sell Stock
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int profit = 0 ; 
+       int mini=prices[0]; 
+        for (int i = 1; i < prices.size(); i ++)
+        {
+        profit = max(profit,prices[i]-mini ); 
+                
+            mini = min(mini,prices[i]);
+        }
+        return profit; 
+    }
+};
+
