@@ -1,0 +1,21 @@
+class Solution {
+public:
+    void func(vector<int>&nums,vector<vector<int>>&ans,int n,int idx,vector<int>arr){
+        if(idx==n){
+            ans.push_back(arr);
+            return ;
+        }
+        arr.push_back(nums[idx]);
+        func(nums,ans,n,idx+1,arr);
+        arr.pop_back();
+        func(nums,ans,n,idx+1,arr);
+    }
+public:
+    vector<vector<int>> subsets(vector<int>& nums) {
+       vector<vector<int>>ans;
+       vector<int>arr;
+       int n=nums.size();
+       func(nums,ans,n,0,arr);
+       return ans; 
+    }
+};

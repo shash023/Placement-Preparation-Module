@@ -1,0 +1,20 @@
+class Solution {
+public:
+    void func(vector<int>&nums,vector<vector<int>>&ans,vector<int>&arr,int idx,int n){
+            ans.push_back(arr);
+            for(int i=idx;i<n;i++){
+                if(i!=idx and nums[i]==nums[i-1]) continue;
+                arr.push_back(nums[i]);
+                func(nums,ans,arr,i+1,n);
+                arr.pop_back();
+            }
+}
+public:
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+       sort(nums.begin(),nums.end());
+       vector<vector<int>>ans;
+       vector<int>arr;
+       func(nums,ans,arr,0,nums.size());
+       return ans; 
+    }
+};
